@@ -205,11 +205,17 @@ for_window [class="Spotify"] border pixel 0
 bindsym Print exec flameshot gui
 
 #feh
-exec feh --bg-scale /home/lucas/Pictures/wallpapers/008.png
+exec_always feh --bg-scale /home/lucas/Pictures/wallpapers/wpp1.png
 
 
 # Polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh -c 
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh -c
 
 #picom
 exec --no-startup-id picom -f
+
+
+# bordas                 border  backgr. text    indicator child_border                                                                     
+client.focused_inactive #0d1010 #212121 #d9d9d9 #0d1010 #063340                                                                            
+client.unfocused        #0d1010 #212121 #d9d9d9 #424242 #063340                                                                            
+client.focused          #d9d9d9 #cecece #000000 #d9d9d9 #d9d9d9                                                                            
