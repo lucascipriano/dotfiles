@@ -17,15 +17,16 @@
 ;==========================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
-background = #282a36
-background-alt = #444
-;foreground = ${xrdb:color7:#222}
+background = #aa000000
+background-alt = #aa090909
 foreground = #dfdfdf
 foreground-alt = #555
-primary = #e60053 
-secondary = #ffb52a
-alert = #bd2c40
+primary = #C251BD
+secondary = #8AB2FC
+alert = #9FC4D9
+label = #cc000000
+deep = #C251BD
+ 
 
 [bar/bar1]
 ;monitor = ${env:MONITOR:HDMI-1}
@@ -33,8 +34,12 @@ width = 100%
 height = 25
 ;offset-x = 1%
 ;offset-y = 1%
-radius = 0
+radius = 6.0
 fixed-center = false
+bottom = true
+enable-ipc = true
+;override-redirect = true
+;wm-restack = i3
 
 
 background = ${colors.background}
@@ -43,26 +48,29 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-;border-size = 4
-;border-color = #00000000
+border-size = 4
+border-color = #00000000
 
 padding-left = 0
 padding-right = 2
-
+ 
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = "xos4 Terminess Powerline:pixelsize=10;1"
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = "Wuncon Siji:pixelsize=10;1"
+font-0 = Hack:pixelsize=10;1
+font-1 = Hack:fontformat=truetype:size=8:antialias=true;0
+font-2 = FontAwesome:fontformat=truetype:size=8:antialias=true;0
+font-3 = siji:pixelsize=10;1
 
 modules-left = bspwm i3
 modules-center = mpd
-modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu  temperature date powermenu
 
 tray-position = right
 tray-padding = 2
-tray-background = #282a36
+;tray-transparent = true
+;tray-background = #0063ff
+
 
 ;wm-restack = bspwm
 ;wm-restack = i3

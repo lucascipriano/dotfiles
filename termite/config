@@ -31,7 +31,7 @@ highlight = #30343e
 # special
 foreground=#f8f8f2
 cursor=#f8f8f2
-background=#282a36
+background=rgba(0, 0, 0, 0.7)
 # black
 color0=#000000
 color8=#4d4d4d

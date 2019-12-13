@@ -209,4 +209,7 @@ exec feh --bg-scale /home/lucas/Pictures/wallpapers/008.png
 
 
 # Polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh -c 
+
+#picom
+exec --no-startup-id picom -f
