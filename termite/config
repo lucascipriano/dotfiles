@@ -29,8 +29,8 @@ highlight = #30343e
 # https://draculatheme.com/
 # https://github.com/dracula/xresources/blob/master/Xresources
 # special
-foreground=#f8f8f2
-cursor=#f8f8f2
+foreground=#8be9fd
+cursor=rgba(248, 248, 242, 0.10)
 background=rgba(0, 0, 0, 0.7)
 # black
 color0=#000000
