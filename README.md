@@ -24,7 +24,7 @@ Com um gerenciador AUR instale
 
 
 **Adicional meu:**
-Quando estou utilizando notebook, adiciono essas duas coisas
+Quando estou utilizando notebook, adiciono essas coisas
 
 [Touchpad para notebook](https://github.com/lucascipriano/touchpad)
 
