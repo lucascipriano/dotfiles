@@ -1,4 +1,6 @@
- ;========================================================== 
+ 
+; CONFIG LUCAS
+;========================================================== 
 ;
 ;
 ;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
@@ -21,22 +23,19 @@ background = #aa000000
 background-alt = #aa090909
 foreground = #dfdfdf
 foreground-alt = #555
-primary = #C251BD
-secondary = #8AB2FC
+primary = #22ff00
+secondary = #22ff00
 alert = #9FC4D9
 label = #cc000000
 deep = #C251BD
  
 
-[bar/bar1]
-;monitor = ${env:MONITOR:HDMI-1}
+[bar/bar]
 width = 100%
-height = 25
-;offset-x = 1%
-;offset-y = 1%
+height = 35
 ;radius = 6.0
 fixed-center = false
-bottom = true
+top = true
 enable-ipc = true
 ;override-redirect = true
 ;wm-restack = i3
@@ -57,18 +56,27 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = Hack:pixelsize=10;1
+font-0 = Hack:pixelsize=9;1
 font-1 = Hack:fontformat=truetype:size=8:antialias=true;0
 font-2 = FontAwesome:fontformat=truetype:size=8:antialias=true;0
-font-3 = siji:pixelsize=10;1
+font-3 = siji:pixelsize=9;1
+
+font-4=Iosevka Nerd Font:size=11;5
+;font-0=SF Pro Display:size=12;5
+font-5=Font Awesome 5 Free Solid:size=8;3
+font-6=Font Awesome 5 Free Regular:size=8;3
+font-7=Font Awesome 5 Brands:size=8;3
+font-8=font\-logos:size=10;4
+font-9=Material Icons:size=13;6
+font-10=IPAGothic:size=11:antialias=true;3
 
 modules-left = bspwm i3
-modules-center = mpd
-modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu  temperature date powermenu
+modules-center = spotify
+modules-right =  pulseaudio memory cpu  temperature date powermenu
 
 tray-position = right
-tray-padding = 2
-;tray-transparent = true
+tray-padding = -3
+tray-transparent = true
 ;tray-background = #0063ff
 
 
@@ -146,7 +154,7 @@ label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
 ; Separator in between workspaces
-; label-separator = |
+label-separator = |
 
 
 
@@ -220,8 +228,8 @@ label = %date% %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
+format-volume = <label-volume>
+label-volume = vol %percentage% %
 label-volume-foreground = ${root.foreground}
 
 label-muted = 🔇 muted
@@ -325,6 +333,80 @@ menu-2-0 = power off
 menu-2-0-exec = systemctl poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
+
+;Spotify modules
+
+[module/previous]
+type = custom/script
+format-font = 2
+format-padding = 2
+format-foreground = ${colors.color2}
+exec = echo ""
+exec-if = "pgrep spotify"
+click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+
+
+[module/next]
+type = custom/script
+format-font = 2
+format-padding = 2
+format-foreground = ${colors.color2}
+exec = echo ""
+exec-if = "pgrep spotify"
+click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+
+[module/playpause]
+type = custom/ipc
+format-font = 2
+format-padding = 0
+format-foreground = ${colors.color2}
+; Default
+hook-0 = echo ""
+; Playing
+hook-1 = echo ""
+; Paused
+hook-2 = echo ""
+initial = 2
+click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+
+[module/spotify]
+type = custom/script
+tail = true
+
+; prefix symbol is shown before the text
+format-prefix = "  "
+format = <label>
+exec = ~/.config/polybar/scripts/scroll_spotify_status.sh
+
+[module/spotify-prev]
+type = custom/script
+exec = echo "<previous-song-symbol>"
+format = <label>
+click-left = playerctl previous spotify
+
+[module/spotify-play-pause]
+type = custom/ipc
+hook-0 = echo "<playing-symbol>"
+hook-1 = echo "<pause-symbol>"
+initial = 1
+click-left = playerctl play-pause spotify
+
+[module/spotify-next]
+type = custom/script
+exec = echo "next-song-symbol"
+format = <label>
+click-left = playerctl next spotify
+
+
+[module/playerctl]
+type = custom/script
+format-margin = 4
+format-prefix = " "
+; This uses playerctl and a script you can find on my repo. Put the player you want after the command below (`playerctld' if you want it to be adaptive)
+exec = playerctl_status playerctld
+exec-if = [[ "$(playerctl -l)" != "No players found" ]] && echo "0"
+tail = true
+interval = 0
 
 [settings]
 screenchange-reload = true
