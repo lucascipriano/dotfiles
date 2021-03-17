@@ -10,6 +10,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'SirVer/ultisnips'
 
+" use Choco to install tabnine :)
+
 call plug#end()
 
 colorscheme onedark
