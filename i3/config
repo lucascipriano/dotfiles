@@ -206,6 +206,7 @@ bindsym Print exec flameshot gui
 
 #feh
 exec_always feh --bg-scale https://source.unsplash.com/1920x1080 
+#exec_always feh --bg-center /home/lucas/Pictures/wallpapers/japoronga.jpg
 
 # Styles
 # border / titlebar
