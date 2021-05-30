@@ -7,11 +7,8 @@
 
 **Programas obrigatórios:** 
 
-    pacman -S picom feh rofi flameshot termite
+    pacman -S picom feh rofi flameshot kitty
 
-**Termite style** 
-
-   [Github do termite-style](https://github.com/adi1090x/termite-style)
 
 **Fontes:**
 
@@ -20,7 +17,7 @@
     ./install
 
 Com um gerenciador AUR instale
-` yay -S siji-git noto-fonts-emoji`
+` yay -S siji-git noto-fonts-emoji ttf-fira-code ttf-jetbrains-mono`
 
 
 **Adicional meu:**
