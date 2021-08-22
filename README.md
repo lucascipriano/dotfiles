@@ -7,7 +7,7 @@
 
 **Programas obrigatórios:** 
 
-    pacman -S picom feh rofi flameshot kitty
+    pacman -S picom feh rofi flameshot pcmanfm kitty/alacritty
 
 
 **Fontes:**
@@ -21,4 +21,7 @@ Com um gerenciador AUR instale
 
 
 
+Caso utilize o TO-DO
+https://github.com/lucascipriano/todo.conky
 
+![wallpaper](./img/github.png)
