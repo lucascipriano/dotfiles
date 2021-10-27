@@ -1,36 +1,62 @@
-call plug#begin('~/.vim/plugged')
-Plug 'joshdick/onedark.vim'
-Plug 'junegunn/fzf'
+call plug#begin()
+Plug 'dikiaap/minimalist'
+
+Plug 'leafgarland/typescript-vim'
+Plug 'ianks/vim-tsx'
+
+
+"https://github.com/neoclide/coc.nvim
+"Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = ['coc-json', 'coc-eslint', 'coc-tslint', 'coc-css', 'coc-emmet', 'coc-tsserver', 'coc-rome', 'coc-prettier']
+
+
+Plug 'terryma/vim-multiple-cursors'
+Plug 'sheerun/vim-polyglot'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'w0rp/ale'
+Plug 'cohama/lexima.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdtree'
-Plug 'shougo/neocomplete.vim'
-Plug 'ervandew/supertab'
-Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'SirVer/ultisnips'
 
-" use Choco to install tabnine :)
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+
+"CSS
+Plug 'ap/vim-css-color'
 
 call plug#end()
 
-colorscheme onedark
-let g:airline_solarized_bg='dark'
-syntax enable
-set number
-set background=dark
-set mouse=a
+
 map <F2> :NERDTreeToggle <CR>
 map <F12> :PlugInstall <CR>
 map <F3> gg=G <CR>
-nnoremap <C-s> :w! <CR>
-nnoremap <C-q> :q! <CR>
-let g:tablineclosebutton=1
-let g:SuperTabDefaultCompletionType = "<c-n>"
-let g:coc_disable_startup_warning = 1
+colorscheme minimalist
+set t_Co=256
+set background=dark
+syntax on
+set hidden
 
-set autoindent
+set number
+set relativenumber
+set termguicolors
 
-set tabstop=2
-set softtabstop=2   " number of spaces in tab when editing
-set shiftwidth=2 
+set mouse=a
+
+set inccommand=split
+set clipboard=unnamed
+"let g:python3_host_prog='/usr/bin/python3'
+set expandtab
+set shiftwidth=2
+
+let mapleader="\<space>"
+
+nnoremap <leader>; A;<esc>
+nnoremap <c-p> :Files<cr>
+nnoremap <c-f> :Ag<space>
+nnoremap <c-[> :+tabnext<cr>
+nnoremap <c-]> :-tabnext<cr>
+let g:UltiSnipsEditSplit="vertical"
