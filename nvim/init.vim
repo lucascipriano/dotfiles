@@ -1,10 +1,11 @@
 call plug#begin()
+"Tema
 Plug 'dikiaap/minimalist'
+
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 Plug 'leafgarland/typescript-vim'
 Plug 'ianks/vim-tsx'
-
-
 "https://github.com/neoclide/coc.nvim
 "Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -23,11 +24,22 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+"DEV JS
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 "CSS
 Plug 'ap/vim-css-color'
 
+"Instalacao do deoplete
+"if has('nvim')
+"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"else
+"  Plug 'Shougo/deoplete.nvim'
+"  Plug 'roxma/nvim-yarp'
+"  Plug 'roxma/vim-hug-neovim-rpc'
+"endif
+"let g:deoplete#enable_at_startup = 1
+"Fim da instalacao do deoplete
 call plug#end()
 
 
@@ -53,6 +65,10 @@ set expandtab
 set shiftwidth=2
 
 let mapleader="\<space>"
+"space + p Prettier
+nnoremap  <leader>p<esc>
+let g:prettier#quickfix_enabled = 0
+autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
 
 nnoremap <leader>; A;<esc>
 nnoremap <c-p> :Files<cr>
