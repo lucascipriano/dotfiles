@@ -29,6 +29,7 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 "CSS
 Plug 'ap/vim-css-color'
+Plug 'cakebaker/scss-syntax.vim'
 
 "Instalacao do deoplete
 "if has('nvim')
