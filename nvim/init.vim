@@ -2,7 +2,11 @@ call plug#begin()
 "Tema
 Plug 'dikiaap/minimalist'
 
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+"Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 
 Plug 'leafgarland/typescript-vim'
 Plug 'ianks/vim-tsx'
@@ -10,7 +14,6 @@ Plug 'ianks/vim-tsx'
 "Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = ['coc-json', 'coc-eslint', 'coc-tslint', 'coc-css', 'coc-emmet', 'coc-tsserver', 'coc-rome', 'coc-prettier']
-
 
 Plug 'terryma/vim-multiple-cursors'
 Plug 'sheerun/vim-polyglot'
@@ -30,7 +33,6 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 "CSS
 Plug 'ap/vim-css-color'
 Plug 'cakebaker/scss-syntax.vim'
-
 "Instalacao do deoplete
 "if has('nvim')
 "  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -46,7 +48,7 @@ call plug#end()
 
 map <F2> :NERDTreeToggle <CR>
 map <F12> :PlugInstall <CR>
-map <F3> gg=G <CR>
+map <F3> :Prettier <CR>
 colorscheme minimalist
 set t_Co=256
 set background=dark
@@ -69,7 +71,7 @@ let mapleader="\<space>"
 "space + p Prettier
 nnoremap  <leader>p<esc>
 let g:prettier#quickfix_enabled = 0
-autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
 
 nnoremap <leader>; A;<esc>
 nnoremap <c-p> :Files<cr>
