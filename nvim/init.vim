@@ -1,7 +1,7 @@
 call plug#begin()
+
 "Tema
 Plug 'dikiaap/minimalist'
-
 "Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 Plug 'prettier/vim-prettier', {
@@ -13,7 +13,10 @@ Plug 'ianks/vim-tsx'
 "https://github.com/neoclide/coc.nvim
 "Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-json', 'coc-eslint', 'coc-tslint', 'coc-css', 'coc-emmet', 'coc-tsserver', 'coc-rome', 'coc-prettier']
+let g:coc_global_extensions = ['coc-json', 'coc-eslint', 'coc-tslint', 'coc-css', 'coc-emmet', 'coc-tsserver', 'coc-rome', 'coc-prettier', 'coc-rls', 'coc-rust-analyzer']
+"rust 
+" https://github.com/fannheyward/coc-rust-analyzer
+" CocCommand rust-analyzer.toggleInlayHints
 
 Plug 'terryma/vim-multiple-cursors'
 Plug 'sheerun/vim-polyglot'
