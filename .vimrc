@@ -1,6 +1,10 @@
 call plug#begin()
-"Fresuras
 
+"Rust
+
+Plug 'rust-lang/rust.vim'
+let g:rustfmt_autosave = 1
+"theme
 Plug 'dikiaap/minimalist'
 Plug 'matsuuu/pinkmare'
 "colorsheme pinkmare
@@ -14,7 +18,7 @@ Plug 'ianks/vim-tsx'
 "https://github.com/neoclide/coc.nvim
 "Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-json', 'coc-eslint', 'coc-tslint', 'coc-css', 'coc-emmet', 'coc-tsserver', 'coc-rome', 'coc-prettier']
+let g:coc_global_extensions = ['coc-json', 'coc-eslint', 'coc-tslint', 'coc-css', 'coc-emmet', 'coc-tsserver', 'coc-rome', 'coc-prettier', 'coc-rls', 'coc-rust-analyzer']
 
 Plug 'terryma/vim-multiple-cursors'
 Plug 'sheerun/vim-polyglot'
@@ -43,8 +47,8 @@ map <F3> :Prettier <CR>
 colorscheme minimalist
 set t_Co=256
 
-map <F11> :-tabnext <CR>
-map <F12> :+tabnext <CR>
+map <F10> :-tabnext <CR>
+map <F11> :+tabnext <CR>
 let g:UltiSnipsEditSplit="vertical"
 syntax on
 set hidden
