@@ -106,16 +106,21 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+
+
+# define names for workspaces
+set $ws1    "1:   Browser "
+set $ws2    "2:   Terminal "
+set $ws3    "3:   Code "
+set $ws4    "4:   Chat "
+set $ws5    "5:   Media "
+set $ws6    "6:   Documents "
+set $ws7    "7:   Design "
+set $ws8    "8:   Files "
+set $ws9    "9:   General "
+set $ws10   "10:   Settings "
+
+
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -149,7 +154,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
-mode "resize" {
+bindsym $mod+r mode "  "
+mode "  " {
         # These bindings trigger as soon as you enter the resize mode
 
         # Pressing left will shrink the window’s width.
@@ -173,24 +179,24 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
+#bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
         status_command i3blocks  ~/etc/i3blocks.conf
-	position top
+	position bottom
 	
 	colors {
-		background #2f343f
-        	statusline #d8dee8
-        	separator #d8dee8
-
-	        # colour of border, background, and text
-	        focused_workspace       #2f343f #000000 #d8dee8
-	        active_workspace        #2f343f #2f343f #d8dee8
-	        inactive_workspace      #2f343f #2f343f #d8dee8
-	        urgent_workspacei       #fff #e00015 #e00015
+        background  #212121
+        statusline  #dddddd
+        separator   #666666
+        # class             border  backgr. text
+        focused_workspace   #2b83a6 #2b83a6 #ffffff
+        active_workspace    #212121 #212121 #ffffff
+        inactive_workspace  #212121 #212121 #86888c
+        urgent_workspace    #d64e4e #d64e4e #ffffff
+        binding_mode        #229c56 #229c56 #ffffff
 
 	}
 }
@@ -199,13 +205,15 @@ bar {
 # Commands
 
 #Rofi
-bindsym $mod+d exec --no-startup-id "rofi -show drun -font \\"DejaVu 9\\" -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
+#bindsym $mod+d exec --no-startup-id "rofi -show drun -show-icons  -font \\"DejaVu 9\\" -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
+
+bindsym $mod+d exec "rofi -show drun -show-icons -modi drun,run"
 
 #flameshot
 bindsym Print exec flameshot gui
 
 #feh
-exec_always feh --bg-scale https://source.unsplash.com/1920x1080 
+exec_always feh --bg-scale /backup/wallpapers/qyqj7y34hlp31.png 
 #exec_always feh --bg-center /home/lucas/Pictures/wallpapers/japoronga.jpg
 # --bg-fill
 # Styles
@@ -229,7 +237,7 @@ for_window [class="Spotify"] border pixel 0
 
 # bordas                 border  backgr. text    indicator child_border                                                                     
 client.focused_inactive #0d1010 #212121 #d9d9d9 #0d1010 #063340                                                                            
-client.unfocused        #0d1010 #212121 #d9d9d9 #424242 #063340                                                                            
+#client.unfocused        #0d1010 #212121 #d9d9d9 #424242 #063340                                                                            
 client.focused          #d9d9d9 #cecece #000000 #d9d9d9 #0d1010 
 
 # Floating
@@ -241,7 +249,12 @@ for_window [class="Termite" instance="termite"] floating enable
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && pkill -RTMIN+10 i3blocks 
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
+#picom
 
+#picom
+exec --no-startup-id picom -f
+
+#exec conky -c /home/lucas/.config/conky.conf
 
 #Install Rclone before commenting!
 #rclone
