@@ -64,6 +64,10 @@ set termguicolors
 
 set mouse=a
 
+
+" Exibir uma coluna para marcar 80 espaços
+set colorcolumn=120
+
 set inccommand=split
 set clipboard=unnamed
 "let g:python3_host_prog='/usr/bin/python3'
