@@ -6,14 +6,14 @@ Plug 'dikiaap/minimalist'
 
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'vue', 'html'] }
 
 Plug 'leafgarland/typescript-vim'
 Plug 'ianks/vim-tsx'
 "https://github.com/neoclide/coc.nvim
 "Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-json', 'coc-eslint', 'coc-tslint', 'coc-css', 'coc-emmet', 'coc-tsserver', 'coc-rome', 'coc-prettier', 'coc-rls', 'coc-rust-analyzer']
+let g:coc_global_extensions = ['coc-json', 'coc-eslint', 'coc-tslint', 'coc-css', 'coc-emmet', 'coc-tsserver', 'coc-rome', 'coc-prettier']
 "rust 
 " https://github.com/fannheyward/coc-rust-analyzer
 " CocCommand rust-analyzer.toggleInlayHints
