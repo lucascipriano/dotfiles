@@ -1,5 +1,5 @@
 call plug#begin()
-
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 "Tema
 Plug 'dikiaap/minimalist'
 "Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
@@ -10,10 +10,9 @@ Plug 'prettier/vim-prettier', {
 
 Plug 'leafgarland/typescript-vim'
 Plug 'ianks/vim-tsx'
-"https://github.com/neoclide/coc.nvim
-"Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-json', 'coc-eslint', 'coc-tslint', 'coc-css', 'coc-emmet', 'coc-tsserver', 'coc-rome', 'coc-prettier']
+let g:coc_global_extensions = ['coc-json', 'coc-eslint', 'coc-tslint', 'coc-css', 'coc-emmet', 'coc-tsserver', 'coc-rome', 'coc-prettier', 'coc-go']
 "rust 
 " https://github.com/fannheyward/coc-rust-analyzer
 " CocCommand rust-analyzer.toggleInlayHints
@@ -36,16 +35,7 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 "CSS
 Plug 'ap/vim-css-color'
 Plug 'cakebaker/scss-syntax.vim'
-"Instalacao do deoplete
-"if has('nvim')
-"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"else
-"  Plug 'Shougo/deoplete.nvim'
-"  Plug 'roxma/nvim-yarp'
-"  Plug 'roxma/vim-hug-neovim-rpc'
-"endif
-"let g:deoplete#enable_at_startup = 1
-"Fim da instalacao do deoplete
+
 call plug#end()
 
 
@@ -61,7 +51,7 @@ set hidden
 set number
 set relativenumber
 set termguicolors
-
+set cursorline
 set mouse=a
 
 
@@ -78,7 +68,7 @@ let mapleader="\<space>"
 "space + p Prettier
 nnoremap  <leader>p<esc>
 let g:prettier#quickfix_enabled = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 nnoremap <leader>; A;<esc>
 nnoremap <c-p> :Files<cr>
@@ -86,3 +76,5 @@ nnoremap <c-f> :Ag<space>
 nnoremap <c-[> :+tabnext<cr>
 nnoremap <c-]> :-tabnext<cr>
 let g:UltiSnipsEditSplit="vertical"
+
+
