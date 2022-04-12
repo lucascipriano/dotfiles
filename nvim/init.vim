@@ -1,80 +1,93 @@
 call plug#begin()
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-"Tema
-Plug 'dikiaap/minimalist'
-"Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+" --------------- Files ----------------
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'scrooloose/nerdtree'
+" --------------------------------------
 
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'vue', 'html'] }
+"----------------Dev-------------------
 
-Plug 'leafgarland/typescript-vim'
-Plug 'ianks/vim-tsx'
+  Plug 'neoclide/coc.nvim', { 'branch': 'master' }
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+  Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-json', 'coc-eslint', 'coc-tslint', 'coc-css', 'coc-emmet', 'coc-tsserver', 'coc-rome', 'coc-prettier', 'coc-go']
-"rust 
-" https://github.com/fannheyward/coc-rust-analyzer
-" CocCommand rust-analyzer.toggleInlayHints
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
+  
+  Plug 'MaxMEllon/vim-jsx-pretty'
+  Plug 'mattn/emmet-vim'
 
-Plug 'terryma/vim-multiple-cursors'
-Plug 'sheerun/vim-polyglot'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'w0rp/ale'
-Plug 'cohama/lexima.vim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'scrooloose/nerdtree'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+  Plug 'ap/vim-css-color'
+" --------------------------------------
+  Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+" ---------------Frufru------------------
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'dikiaap/minimalist'
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'sheerun/vim-polyglot'
 
-"DEV JS
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-
-"CSS
-Plug 'ap/vim-css-color'
-Plug 'cakebaker/scss-syntax.vim'
-
+" --------------------------------------
 call plug#end()
 
+let g:coc_global_extensions = ['coc-prettier', 'coc-tsserver', 'coc-eslint', 'coc-eslint', 'coc-rust-analyzer', 'coc-css', 'coc-scssmodules' ]
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 
-map <F2> :NERDTreeToggle <CR>
-map <F12> :PlugInstall <CR>
-map <F3> :Prettier <CR>
+
+let mapleader="\<space>"
 colorscheme minimalist
 set t_Co=256
 set background=dark
+
+
+
+"-------------- Keybinds ----------------
+nnoremap <leader>ff :Telescope find_files<esc>
+nnoremap <leader>fg :Telescope live_grep<esc>
+nnoremap <leader>e :NERDTreeToggle<esc>
+
+nnoremap <F12> :PlugInstall <CR>
+nnoremap <F2> :Prettier <CR>
+
+noremap <Leader>t :vsplit term://zsh<CR>
+
+
+nnoremap <C-t> :tabnew <bar> :NERDTree<CR>
+noremap <leader>q :tabclose<CR>
+
+noremap <Tab> :tabnext<CR>
+noremap <S-Tab> :tabprevious<CR>
+
+" Better window navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+nnoremap <silent> K :call CocAction('doHover')<CR>
+
+" --------------------------------------
+" ---- Prettier
+
+let g:prettier#autoformat_require_pragma = 0
+let g:prettier#quickfix_enabled = 0
+
+autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
 syntax on
 set hidden
-
+set expandtab
+set shiftwidth=2
 set number
 set relativenumber
 set termguicolors
 set cursorline
 set mouse=a
-
-
-" Exibir uma coluna para marcar 80 espaços
-set colorcolumn=120
-
-set inccommand=split
-set clipboard=unnamed
-"let g:python3_host_prog='/usr/bin/python3'
-set expandtab
-set shiftwidth=2
-
-let mapleader="\<space>"
-"space + p Prettier
-nnoremap  <leader>p<esc>
-let g:prettier#quickfix_enabled = 0
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
-nnoremap <leader>; A;<esc>
-nnoremap <c-p> :Files<cr>
-nnoremap <c-f> :Ag<space>
-nnoremap <c-[> :+tabnext<cr>
-nnoremap <c-]> :-tabnext<cr>
-let g:UltiSnipsEditSplit="vertical"
+set encoding=UTF-8
+set splitbelow  
+set splitright  
+set clipboard+=unnamedplus
+set autoindent
 
 
